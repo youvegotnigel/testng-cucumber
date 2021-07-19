@@ -31,7 +31,12 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import helpers.ReportHelper;
 
-@CucumberOptions(strict = true, monochrome = true, features = "src/test/resources/features", glue = "stepdefinition", format = {"pretty","json:target/cucumber.json"}, tags = { "@Regression,@JunitScenario,@TestngScenario" })
+@CucumberOptions(strict = true,
+				 monochrome = true,
+	             features = "src/test/resources/features",
+	             glue = "stepdefinition",
+	             format = {"pretty","json:target/cucumber.json"},
+	             tags = { "@Regression,@JunitScenario,@TestngScenario" })
 
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
@@ -41,7 +46,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 	public void LoadConfigProperty() throws IOException {
 		config = new Properties();
 		FileInputStream ip = new FileInputStream(
-				System.getProperty("user.dir") + "//src//test//resources//config//config.properties");
+				System.getProperty("user.dir") + "\\src\\test\\resources\\config\\config.properties");
 		config.load(ip);
 	}
 
@@ -59,9 +64,9 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 			System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		}
 		if(System.getProperty("os.name").startsWith("Windows")) {
-			String firefoxDriverPath = System.getProperty("user.dir") + "//src//test//resources//drivers//windows//geckodriver.exe";
+			String firefoxDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\windows\\geckodriver.exe";
 			System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
-			String chromeDriverPath = System.getProperty("user.dir") + "//src//test//resources//drivers//windows//chromedriver.exe";
+			String chromeDriverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\windows\\chromedriver.exe";
 			System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 		}
 	}
@@ -94,7 +99,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 
 	public void explicitWait(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 3000);
-		wait.until(ExpectedConditions.visibilityOf(element));
+		//wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void pageLoad(int time) {
